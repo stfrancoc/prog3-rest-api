@@ -14,5 +14,8 @@
     "car"
   ],
   "author": "Equipo 4",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moongose": "^1.0.0"
+  }
 }
