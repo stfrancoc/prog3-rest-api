@@ -1,0 +1,18 @@
+{
+    "db-connections":{
+        "mongodb":{
+            "host": "cluster0.gcqff9q.mongodb.net",
+            "user": "owner_rest-api_user",
+            "password": "rfRBl5hm71miIhwu",
+            "dbname": "ownerDB"
+        }
+    },
+    "secretkeys": {
+        "cryptojs": "ABCD"
+    },
+    "roles":{
+        "person": 1,
+        "car": 2
+    },
+    "server-port": 3001
+}
