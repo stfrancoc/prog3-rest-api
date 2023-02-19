@@ -1,5 +1,5 @@
 /** Dto */
-const personDto = require("../../model/dto/person.dto")
+const carDto = require("../../model/dto/car.dto")
 const userDto = require("../../model/dto/user.dto")
 const config = require("config")
 
@@ -7,16 +7,18 @@ const config = require("config")
 const helper = require("../helpers/general.helper")
 const notHelper = require("../helpers/notification.helper")
 
-exports.createPerson = (req, res, next) => {
-    let pers = {
-        id: req.body.id,
-        lastname: req.body.lastname,
-        username: req.body.username,
-        direction: req.body.direction,
-        phone: req.body.phone,
-        email: req.body.email
-    }
-    personDto.create(pers, (err, data) => {
+exports.createCar = (req, res, next) => {
+    let car = {
+        plate: req.body.plate,
+        brand: req.body.brand,  
+        model: req.body.model,
+        year: req.body.year,
+        city: req.body.city,
+        color: req.body.color,
+        soat: req.body.soat
+
+    }       
+    carDto.create(car, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
@@ -24,16 +26,15 @@ exports.createPerson = (req, res, next) => {
                 }
             )
         }
-        let r = config.get("roles").person
+        let r = config.get("roles").car
         let user = {
-            lastname: pers.lastname,
-            username: pers.username,
-            password: helper.EncryptPassword(req.body.password),
+            plate: car.plate,
+            model: car.model,
             role: r
         }
         userDto.create(user, (err, u) => {
             if (err) {
-                personDto.delete({ _id: data._id }, (e, data) => {
+                carDto.delete({ _id: data._id }, (e, data) => {
                     return res.status(400).json(
                         {
                             error: err
@@ -41,7 +42,6 @@ exports.createPerson = (req, res, next) => {
                     )
                 })
             }
-            notHelper.sendSMS(pers.phone)
             res.status(201).json(
                 {
                     info: data
@@ -54,16 +54,17 @@ exports.createPerson = (req, res, next) => {
 
 
 
-exports.updatePerson = (req, res, next) => {
-    let pers = {
-        id: req.body.id,
-        lastname: req.body.lastname,
-        username: req.body.username,
-        direction: req.body.direction,
-        phone: req.body.phone,
-        email: req.body.email
-    }
-    personDto.update({ _id: req.body.id }, pers, (err, data) => {
+exports.updateCar = (req, res, next) => {
+    let car = {
+        plate: req.body.plate,
+        brand: req.body.brand,  
+        model: req.body.model,
+        year: req.body.year,
+        city: req.body.city,
+        color: req.body.color,
+        soat: req.body.soat
+    }  
+    carDto.update({ _id: req.body.id }, car, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
@@ -83,7 +84,7 @@ exports.updatePerson = (req, res, next) => {
 
 exports.getAll = (req, res, next) => {
 
-    personDto.getAll({}, pers, (err, data) => {
+    carDto.getAll({}, car, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
@@ -100,9 +101,9 @@ exports.getAll = (req, res, next) => {
 }
 
 
-exports.getByCode = (req, res, next) => {
+exports.getByPlate = (req, res, next) => {
 
-    personDto.getByCode({ code: req.params.code }, pers, (err, data) => {
+    carDto.getByPlate({ code: req.params.plate }, car, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
@@ -119,9 +120,9 @@ exports.getByCode = (req, res, next) => {
 }
 
 
-exports.deletePerson = () => {
+exports.deleteCar = () => {
 
-    personDto.delete({ _id: req.body.id }, (err, data) => {
+    carDto.delete({ _id: req.body.plate }, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
