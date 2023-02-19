@@ -83,7 +83,7 @@ exports.updatePerson = (req, res, next) => {
 
 exports.getAll = (req, res, next) => {
 
-    personDto.getAll({}, pers, (err, data) => {
+    personDto.getAll({}, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {

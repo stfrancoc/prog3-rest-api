@@ -84,7 +84,7 @@ exports.updateCar = (req, res, next) => {
 
 exports.getAll = (req, res, next) => {
 
-    carDto.getAll({}, car, (err, data) => {
+    carDto.getAll({}, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
