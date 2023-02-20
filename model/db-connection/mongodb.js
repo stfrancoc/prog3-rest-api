@@ -7,6 +7,8 @@ const mongodbInfo = config.get("db-connections.mongodb");
 // user: owner_rest-api_user
 // pass: rfRBl5hm71miIhwu
 
+//mongodb+srv://owner_rest-api_user:rfRBl5hm71miIhwu@cluster0.gcqff9q.mongodb.net/test
+
 //mongodb+srv://<username>:<password>@cluster0.gcqff9q.mongodb.net/?retryWrites=true&w=majority
 
 const connStr = `mongodb+srv://${mongodbInfo.user}:${mongodbInfo.password}@${mongodbInfo.host}/${mongodbInfo.dbname}?retryWrites=true&w=majority`;

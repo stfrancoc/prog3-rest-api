@@ -16,7 +16,7 @@ const urlEncodedParser = bodyParser.urlencoded(
 app.use(jsonParser);
 app.use(urlEncodedParser);
 
-const ipFn = require("./middlewar/getIpAdress");
+const ipFn = require("./middleware/getIpAddress");
 app.use("*", ipFn);
 
 //** methods */

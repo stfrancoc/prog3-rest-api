@@ -1,6 +1,7 @@
 /**packages */
 var CryptoJS = require("crypto-js");
 const config = require("config");
+//const jwt = require("jsonwebtoken");
 
 /**Encrypt password */
 exports.EncryptPassword = (password) =>{

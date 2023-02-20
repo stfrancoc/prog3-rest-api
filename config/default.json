@@ -1,14 +1,15 @@
 {
     "db-connections":{
         "mongodb":{
-            "host": "cluster0.gcqff9q.mongodb.net",
-            "user": "owner_rest-api_user",
-            "password": "rfRBl5hm71miIhwu",
+            "host": "cluster0.hxolaf7.mongodb.net",
+            "user": "BDprog3",
+            "password": "8Y89xATKicJFRNW1",
             "dbname": "ownerDB"
         }
     },
     "secretkeys": {
-        "cryptojs": "ABCD"
+        "cryptojs": "ABCD",
+        "jwt": "ABCD@"
     },
     "roles":{
         "person": 1,
